@@ -24,6 +24,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -39,7 +40,7 @@ public abstract class Panel extends JPanel {
 	protected static final Color COLOR1 = new Color(55, 170, 200);
 	/** Second corporate color used as signal color */
 	protected static final Color COLOR2 = new Color(200,  80,  75);
-
+	
 	/**
 	 * Performs basic initialization of an example,
 	 * like setting a default size.
@@ -72,6 +73,7 @@ public abstract class Panel extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(getPreferredSize());
 		frame.setVisible(true);
+		centerWindow(frame);
 		return frame;
 	}
 
@@ -79,4 +81,12 @@ public abstract class Panel extends JPanel {
 	public String toString() {
 		return getTitle();
 	}
+	
+	public static void centerWindow(JFrame frame) {
+	    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+	    int x = (int) (((dimension.getWidth() - frame.getWidth()) / 2));
+	    int y = (int) (((dimension.getHeight() - frame.getHeight()) / 2));
+	    frame.setLocation(x, y);
+	}
+	
 }
