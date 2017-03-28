@@ -2,4 +2,6 @@
 
 A brute-force approach. Written in Java using the GRAL Library. Complexity: O(n!)
 An algorithm that finds and prints a tour that passes from every city.
-The cities are located in random coordinates.
+The city coordinates can either be read from a text file, or can be generated randomly.
+
+GRAL graphing library link: http://trac.erichseifert.de/gral/
