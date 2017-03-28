@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 // TRAVELLING SALESMAN PROBLEM
 // Made by Chris Kormaris
-public class Main {
+public class MainRandomCoordinates {
 	
 	static List<LatLong> cities;	
 	static List<LatLong> shortestTour;
@@ -16,17 +16,24 @@ public class Main {
 	public static void main(String[] args) {
 		cities = new ArrayList<LatLong>();
 		
-		// SOME TEST CITY COORDINATES
+		/*** GET CITY COORDINATES FROM FILE ***/
+		/*
+		FileManager fm = new FileManager();
+		fm.parseFile("tsp/cities.txt");
+		cities = fm.getCities();
+		*/
+		
+		/*** SOME TEST CITY COORDINATES ***/
 //		LatLong city1 = new LatLong(10, 10, 1);
 //		LatLong city2 = new LatLong(20, -20, 2);
 //		LatLong city3 = new LatLong(-30, -30, 3);
 //		LatLong city4 = new LatLong(-40, 40, 4);
 //		LatLong city5 = new LatLong(-25, 25, 5);
 //		LatLong city6 = new LatLong(35, 35, 6);
-		
+				
+		/*** RANDOM CITY COORDINATES ***/
 //		LatLong randLatLong = new LatLong().getRandomLatLong(50, -50, 50, -50);
-		
-		// RANDOM CITY COORDINATES
+
 		LatLong city1 = new LatLong().getRandomLatLong(50, -50, 50, -50, 1);
 		LatLong city2 = new LatLong().getRandomLatLong(50, -50, 50, -50, 2);
 		LatLong city3 = new LatLong().getRandomLatLong(50, -50, 50, -50, 3);
