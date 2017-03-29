@@ -1,6 +1,6 @@
-city1 -> latitude: 5.02842043743032, longitude: -15.975855245155069
-city2 -> latitude: -12.810296107747018, longitude: -29.391624184062504
-city3 -> latitude: -19.919373426451692, longitude: -0.9259462964256713
-city4 -> latitude: 14.475700783888222, longitude: 3.6462491274125526
-city5 -> latitude: 19.588623276420307, longitude: 23.542094768109983
-city6 -> latitude: 20.896046360643304, longitude: -16.45222663509533
+city1 -> latitude: 5.02, longitude: -15.97
+city2 -> latitude: -12.81, longitude: -29.39
+city3 -> latitude: -19.91, longitude: -0.92
+city4 -> latitude: 14.47, longitude: 3.64
+city5 -> latitude: 19.58, longitude: 23.54
+city6 -> latitude: 20.89, longitude: -16.45
