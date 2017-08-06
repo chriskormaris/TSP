@@ -6,6 +6,7 @@ An algorithm that finds and prints a tour that passes from every city.
 The city coordinates can either be read from a text file, or be randomly generated.
 
 **Plot**
+
 ![TSPReadCoordinatesFromFile](/images/TSPReadCoordinatesFromFile.jar_plot.png)
 
 
