@@ -21,36 +21,6 @@ public class MainReadCoordinatesFromFile {
 		fm.parseFile("coordinates/cities.txt");
 		cities = fm.getCities();
 		
-		/*** SOME TEST CITY COORDINATES ***/
-//		LatLong city1 = new LatLong(10, 10, 1);
-//		LatLong city2 = new LatLong(20, -20, 2);
-//		LatLong city3 = new LatLong(-30, -30, 3);
-//		LatLong city4 = new LatLong(-40, 40, 4);
-//		LatLong city5 = new LatLong(-25, 25, 5);
-//		LatLong city6 = new LatLong(35, 35, 6);
-				
-		/*** RANDOM CITY COORDINATES ***/
-//		LatLong randLatLong = new LatLong().getRandomLatLong(50, -50, 50, -50);
-
-		/*
-		LatLong city1 = new LatLong().getRandomLatLong(50, -50, 50, -50, 1);
-		LatLong city2 = new LatLong().getRandomLatLong(50, -50, 50, -50, 2);
-		LatLong city3 = new LatLong().getRandomLatLong(50, -50, 50, -50, 3);
-		LatLong city4 = new LatLong().getRandomLatLong(50, -50, 50, -50, 4);
-		LatLong city5 = new LatLong().getRandomLatLong(50, -50, 50, -50, 5);
-		LatLong city6 = new LatLong().getRandomLatLong(50, -50, 50, -50, 6);
-//		LatLong city7 = new LatLong().getRandomLatLong(50, -50, 50, -50, 7);
-//		LatLong city8 = new LatLong().getRandomLatLong(50, -50, 50, -50, 8);
-//		LatLong city9 = new LatLong().getRandomLatLong(50, -50, 50, -50, 9);
-		
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4));
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5));
-		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6));
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7));
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7, city8));
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7, city8, city9));
-		*/
-		
 		// calculate the distances between every city and print them
 		for (LatLong city: cities) {
 			System.out.println("City " + (cities.indexOf(city) + 1) + " coordinates -> " + city);
