@@ -1,4 +1,3 @@
-
 import java.util.List;
 import java.util.ArrayList;
 //import java.util.Arrays;
@@ -18,7 +17,7 @@ public class MainReadCoordinatesFromFile {
 		
 		/*** GET CITY COORDINATES FROM FILE ***/
 		FileManager fm = new FileManager();
-		fm.parseFile("coordinates/cities.txt");
+		fm.parseFile("tsp_coordinates/cities.txt");
 		cities = fm.getCities();
 		
 		// calculate the distances between every city and print them

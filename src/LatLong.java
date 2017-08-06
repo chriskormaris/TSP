@@ -1,4 +1,3 @@
-
 //Geograhic Coordinates
 public class LatLong {
 	

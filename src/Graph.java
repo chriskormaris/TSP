@@ -1,4 +1,3 @@
-
 // A class to represent a connected, directed and weighted graph
 public class Graph {
 			

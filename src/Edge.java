@@ -1,4 +1,3 @@
-
 // A class to represent a weighted edge in graph
 public class Edge {
 	
