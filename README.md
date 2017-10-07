@@ -1,5 +1,7 @@
 # TSP (Travelling Salesman Problem) Plot
 
+Video for this project: [here](https://www.youtube.com/watch?v=WmfGa458OcI)
+
 A brute-force approach. Written in Java using the GRAL Library. Complexity: O(n!)
 
 An algorithm that finds and prints a tour that passes from every city.
