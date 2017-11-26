@@ -110,7 +110,8 @@ public class PlotTour extends Panel {
  		axisRendererX.setTickSpacing(5.0);
  		
  		
- 		// Format data lines
+ 		// Format data lines.
+ 		// This batch of code connects lines together.
  		LineRenderer lineRenderer = new DefaultLineRenderer2D();
  		lineRenderer.setColor(COLOR1);
  		lineRenderer.setStroke(new BasicStroke(
@@ -120,10 +121,10 @@ public class PlotTour extends Panel {
 
  		// Custom gaps for points
  		lineRenderer.setGap(2.0);
- 		lineRenderer.setGapRounded(true);
+ 		lineRenderer.setGapRounded(true); 		
  		
- 		
- 		// Format rendering of data points
+ 		// Format rendering of data points.
+ 		// This batch of code changes the color of the points randomly.
  		for (DataSeries ds: points) {
  	 		PointRenderer defaultPointRenderer = new DefaultPointRenderer2D();
  	 		
@@ -143,6 +144,7 @@ public class PlotTour extends Panel {
  		
  		// Change zoom level
  		plot.getNavigator().setZoom(0.6f);
+ 		
  	}
 
  	@Override
