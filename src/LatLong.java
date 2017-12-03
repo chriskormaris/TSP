@@ -76,7 +76,7 @@ public class LatLong {
 	
 	@Override
 	public String toString() {
-		if (this.id != 0) {
+		if (this.id >= 0) {
 			return "id: " + id + ", latitude: " + this.getLatitude() + ", longitude: " + this.getLongitude();
 		} else {
 			return "latitude: " + this.getLatitude() + ", longitude: " + this.getLongitude();
@@ -89,8 +89,9 @@ public class LatLong {
 //		System.out.println("in hash code");
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) latitude;
-		result = prime * result + (int) longitude;
+		result = prime * result + (int) this.latitude;
+		result = prime * result + (int) this.longitude;
+		result = prime * result + (int) this.id;
 		return result;
 	}
 
@@ -109,7 +110,9 @@ public class LatLong {
 			return false;
 		if (getLongitude() != other.getLongitude())
 			return false;
-		   
+		if (getId() != other.getId())
+			return false;
+		
 		return true;
 	}
 
