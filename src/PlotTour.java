@@ -96,7 +96,7 @@ public class PlotTour extends Panel {
 // 		labels.put(1.5, "OnePointFive");
 // 		axisRendererX.setCustomTicks(labels);
  		
- 		// Custom stroke for the x-axis
+ 		// Custom stroke for the Y axis
  		BasicStroke stroke = new BasicStroke(2f);
  		axisRendererX.setShapeStroke(stroke);
  		Label linearAxisLabel = new Label("Latitude");
