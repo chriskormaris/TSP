@@ -34,11 +34,11 @@ public class PlotTour extends Panel {
 	public PlotTour(List<LatLong> shortestTour) {
 		this.tour = shortestTour;
 
-	    //CREATES A DATA TABLE AND RUNS A LOOP TO INCREMENTALLY PLOT OUT POINTS OF A SINE CURVE ON THE STEP .25
+	    // CREATES A DATA TABLE
 	    DataTable tourData = new DataTable(Double.class, Double.class);
 	    tourData.setName("cities");
 
-	    //PLOT OUT DATA AND SET XYPLOT IN JFRAME, THEN CONNECT LINES AND CHANGE COLORS
+	    // PLOT OUT DATA
 	    XYPlot plot = new XYPlot(tourData);
 	    
 	    for (LatLong city: tour) {
