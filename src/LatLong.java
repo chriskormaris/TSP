@@ -1,4 +1,4 @@
-//Geograhic Coordinates
+// Geographic Coordinates
 public class LatLong {
 	
 	private double latitude; // y axis
