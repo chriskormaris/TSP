@@ -25,8 +25,8 @@ public class FileManager {
 			while ((line = br.readLine()) != null) {
 			
 				if (line.startsWith("city")) {
-					double latitude = Double.parseDouble(line.split("->")[1].split(",")[0].replace("latitude:", ""));
-					double longitude = Double.parseDouble(line.split("->")[1].split(",")[1].replace("longitude:", ""));
+					double latitude = Double.parseDouble(line.split("->")[1].split(",")[0].replace("latitude:", "").replaceAll("\\s+",""));
+					double longitude = Double.parseDouble(line.split("->")[1].split(",")[1].replace("longitude:", "").replaceAll("\\s+",""));
 					LatLong latlong = new LatLong(latitude, longitude, id);
 					
 					// check if latlong is unique
