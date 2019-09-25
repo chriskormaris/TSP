@@ -1,10 +1,17 @@
+package tsp_plot;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+//import javax.swing.JMenu;
+//import javax.swing.JMenuBar;
+//import javax.swing.JMenuItem;
 
 /**
  * Abstract base class for all visual examples.
@@ -51,6 +58,27 @@ public abstract class Panel extends JPanel {
 		frame.setSize(getPreferredSize());
 		frame.setVisible(true);
 		centerWindow(frame);
+		
+		/*
+ 		// add a menu bar
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu = new JMenu("File");
+        JMenuItem menuItem = new JMenuItem("Redraw plot");
+        menu.add(menuItem);
+        menuBar.add(menu);
+        frame.add(menuBar, BorderLayout.NORTH);
+        
+        // add action listener
+        // redraw the plot
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+            	frame.repaint();
+            	frame.dispose();
+            	Main.main(new String[0]);
+            }
+        });
+		*/
+		
 		return frame;
 	}
 

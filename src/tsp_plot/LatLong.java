@@ -1,3 +1,5 @@
+package tsp_plot;
+
 // Geographic Coordinates
 public class LatLong {
 	
@@ -118,9 +120,9 @@ public class LatLong {
 
 	// calculate the euclidean distance between two nodes
 	public double distanceFrom(LatLong latlong2) {
-	//public synchronized double distanceFrom(LatLong latlong2) {
+//	public synchronized double distanceFrom(LatLong latlong2) {
 		double distance = 0;
-				
+		
 		double latitude1 = getLatitude();
 		double latitude2 = latlong2.getLatitude();
 				

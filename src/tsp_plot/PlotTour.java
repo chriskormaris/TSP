@@ -1,3 +1,5 @@
+package tsp_plot;
+
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,10 +24,10 @@ import de.erichseifert.gral.ui.InteractivePanel;
 
 public class PlotTour extends Panel {
 	
-	/** Version id for serialization. */
+	// Version id for serialization.
 	private static final long serialVersionUID = -5263057758564264676L;
 
-	/** Instance to generate random data values. */
+	// Instance to generate random data values.
 	private static final Random random = new Random();
 	
 	private List<LatLong> tour;
@@ -38,14 +40,14 @@ public class PlotTour extends Panel {
 	    DataTable tourData = new DataTable(Double.class, Double.class);
 	    tourData.setName("cities");
 
-	    // PLOT OUT DATA
-	    XYPlot plot = new XYPlot(tourData);
+	    // PLOT OUT DATA AND SET XYPLOT IN JFRAME, THEN CONNECT LINES AND CHANGE COLORS
+	    XYPlot xyPlot = new XYPlot(tourData);
 	    
 	    for (LatLong city: tour) {
 	    	tourData.add(city.getLongitude(), city.getLatitude());
 	    }
 	    
-	    plot.getLegend().clear();
+	    xyPlot.getLegend().clear();
 	    
 	    // Create different data series for each city point.
 	    // This is useful for the legend and for assigning different colors.
@@ -65,30 +67,30 @@ public class PlotTour extends Panel {
 	    // Sort city points data series by name.
 	    points.sort(new DataSeriesComparator());
  		for (DataSeries ds: points) {
- 			plot.add(ds);
+ 			xyPlot.add(ds);
  		}
 	    
-	    plot.setLegendVisible(true);
+	    xyPlot.setLegendVisible(true);
 	    
 	    // Format plot
- 		plot.setInsets(new Insets2D.Double(20.0, 40.0, 40.0, 40.0));
- 		plot.setBackground(Color.WHITE);
- 		plot.getTitle().setText(getDescription());
+ 		xyPlot.setInsets(new Insets2D.Double(20.0, 40.0, 40.0, 40.0));
+ 		xyPlot.setBackground(Color.WHITE);
+ 		xyPlot.getTitle().setText(getDescription());
 
  		// Format plot area
- 		plot.getPlotArea().setBackground(new RadialGradientPaint(
+ 		xyPlot.getPlotArea().setBackground(new RadialGradientPaint(
  			new Point2D.Double(0.5, 0.5),
  			0.75f,
  			new float[] { 0.6f, 0.8f, 1.0f },
  			new Color[] { new Color(0, 0, 0, 0), new Color(0, 0, 0, 32), new Color(0, 0, 0, 128) }
  		));
- 		plot.getPlotArea().setBorderStroke(null);
+ 		xyPlot.getPlotArea().setBorderStroke(null);
 
  		// Format axes
- 		AxisRenderer axisRendererX = plot.getAxisRenderer(XYPlot.AXIS_X);
- 		AxisRenderer axisRendererY = plot.getAxisRenderer(XYPlot.AXIS_Y);
+ 		AxisRenderer axisRendererX = xyPlot.getAxisRenderer(XYPlot.AXIS_X);
+ 		AxisRenderer axisRendererY = xyPlot.getAxisRenderer(XYPlot.AXIS_Y);
  		axisRendererX.setLabel(new Label("Longitude"));
- 		plot.setAxisRenderer(XYPlot.AXIS_X, axisRendererX);
+ 		xyPlot.setAxisRenderer(XYPlot.AXIS_X, axisRendererX);
  		
  		// Custom tick labels
 // 		Map<Double, String> labels = new HashMap<Double, String>();
@@ -117,7 +119,7 @@ public class PlotTour extends Panel {
  		lineRenderer.setStroke(new BasicStroke(
  				3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND,
  				10.0f, new float[] {3f, 6f}, 0.0f));
-		plot.setLineRenderers(tourData, lineRenderer);
+		xyPlot.setLineRenderers(tourData, lineRenderer);
 
  		// Custom gaps for points
  		lineRenderer.setGap(2.0);
@@ -135,15 +137,15 @@ public class PlotTour extends Panel {
 			Color randomColor = new Color(r, g, b);
  	 		
  	 		defaultPointRenderer.setColor(randomColor);
- 			plot.setPointRenderers(ds, defaultPointRenderer);
+ 			xyPlot.setPointRenderers(ds, defaultPointRenderer);
 	    }
  		
  		
  		// Add plot to Swing component
- 		add(new InteractivePanel(plot), BorderLayout.CENTER);
+ 		add(new InteractivePanel(xyPlot), BorderLayout.CENTER);
  		
  		// Change zoom level
- 		plot.getNavigator().setZoom(0.6f);
+ 		xyPlot.getNavigator().setZoom(0.6f);
  		
  	}
 

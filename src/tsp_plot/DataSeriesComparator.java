@@ -1,3 +1,5 @@
+package tsp_plot;
+
 import java.util.Comparator;
 
 import de.erichseifert.gral.data.DataSeries;

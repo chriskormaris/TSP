@@ -1,7 +1,13 @@
+package tsp;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import graph.Edge;
+import graph.Graph;
+import graph.Vertex;
 
 // a brute-force approach
 // link -> http://www.quickperm.org/

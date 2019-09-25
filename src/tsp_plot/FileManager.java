@@ -1,3 +1,5 @@
+package tsp_plot;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -25,8 +27,8 @@ public class FileManager {
 			while ((line = br.readLine()) != null) {
 			
 				if (line.startsWith("city")) {
-					double latitude = Double.parseDouble(line.split("->")[1].split(",")[0].replace("latitude:", "").replaceAll("\\s+",""));
-					double longitude = Double.parseDouble(line.split("->")[1].split(",")[1].replace("longitude:", "").replaceAll("\\s+",""));
+					double latitude = Double.parseDouble(line.split("->")[1].split(",")[0].replace("latitude:", "").replace(" ", ""));
+					double longitude = Double.parseDouble(line.split("->")[1].split(",")[1].replace("longitude:", "").replace(" ", ""));
 					LatLong latlong = new LatLong(latitude, longitude, id);
 					
 					// check if latlong is unique

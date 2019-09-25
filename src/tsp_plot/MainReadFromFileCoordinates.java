@@ -1,13 +1,19 @@
-import java.util.List;
+package tsp_plot;
+
 import java.util.ArrayList;
-//import java.util.Arrays;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import graph.Edge;
+import graph.Graph;
+import graph.Vertex;
+import tsp.TSP;
 
 
 // TRAVELLING SALESMAN PROBLEM
 // Made by Chris Kormaris
-public class MainReadCoordinatesFromFile {
+public class MainReadFromFileCoordinates {
 	
 	static List<LatLong> cities;	
 	static List<LatLong> shortestTour;
@@ -19,19 +25,6 @@ public class MainReadCoordinatesFromFile {
 		FileManager fm = new FileManager();
 		fm.parseFile("tsp_coordinates/cities.txt");
 		cities = fm.getCities();
-		
-		// calculate the distances between every city and print them
-		for (LatLong city: cities) {
-			System.out.println("City " + (cities.indexOf(city) + 1) + " coordinates -> " + city);
-			for (LatLong other_city: cities) {
-				if (city != other_city) {
-					double distance = city.distanceFrom(other_city);
-					System.out.println("City " + (cities.indexOf(city) + 1) + " distance from" + " City " + (cities.indexOf(other_city) + 1) + " -> " + distance + " meters");
-				}
-			}
-			System.out.println();
-		}
-		
 		
 		/*** RUN TRAVELLING SALESMAN ALGORITHM ***/	
 		
@@ -72,7 +65,7 @@ public class MainReadCoordinatesFromFile {
 		System.out.println("shortest tour: ");
 		for (int i=0; i<tour.length; i++) {
 			for (LatLong city: cities) {
-				
+
 				if (tour[i].number == city.getId()) {
 					shortestTour.add(city);
 					System.out.println(city + " ");

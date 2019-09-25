@@ -1,4 +1,4 @@
 :: This file is for Windows only.
-
-java -cp .\gral\gral-core-0.11.jar;.\bin\ MainRandomCoordinates
+:: TODO
+java -cp .\lib\graph.jar;.\lib\gral-core-0.11.jar;.\bin\tsp\;.\bin\tsp_plot\ MainRandomCoordinates
 pause;
