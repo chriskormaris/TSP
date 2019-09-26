@@ -43,6 +43,7 @@ public class MainRandomCoordinates {
 //		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7, city8, city9));
 		
 		// calculate the distances between every city and print them
+		/*
 		for (LatLong city: cities) {
 			System.out.println("City " + (cities.indexOf(city) + 1) + " coordinates -> " + city);
 			for (LatLong other_city: cities) {
@@ -53,6 +54,7 @@ public class MainRandomCoordinates {
 			}
 			System.out.println();
 		}
+		*/
 		
 		/*** RUN TRAVELLING SALESMAN ALGORITHM ***/	
 		

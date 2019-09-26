@@ -26,6 +26,20 @@ public class MainReadFromFileCoordinates {
 		fm.parseFile("tsp_coordinates/cities.txt");
 		cities = fm.getCities();
 		
+		// calculate the distances between every city and print them
+		/*
+		for (LatLong city: cities) {
+			System.out.println("City " + (cities.indexOf(city) + 1) + " coordinates -> " + city);
+			for (LatLong other_city: cities) {
+				if (city != other_city) {
+					double distance = city.distanceFrom(other_city);
+					System.out.println("City " + (cities.indexOf(city) + 1) + " distance from" + " City " + (cities.indexOf(other_city) + 1) + " -> " + distance + " meters");
+				}
+			}
+			System.out.println();
+		}
+		*/
+		
 		/*** RUN TRAVELLING SALESMAN ALGORITHM ***/	
 		
 		// First construct the Graph
