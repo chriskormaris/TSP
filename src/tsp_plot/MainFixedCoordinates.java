@@ -24,10 +24,10 @@ public class MainFixedCoordinates {
 
 		/*** FIXED CITY COORDINATES ***/
 		LatLong city1 = new LatLong(10, 10, 1);
-		LatLong city2 = new LatLong(20, -20, 2);
+		LatLong city2 = new LatLong(-20, 20, 2);
 		LatLong city3 = new LatLong(-30, -30, 3);
-		LatLong city4 = new LatLong(-40, 40, 4);
-		LatLong city5 = new LatLong(-25, 25, 5);
+		LatLong city4 = new LatLong(40, -40, 4);
+		LatLong city5 = new LatLong(25, -25, 5);
 		LatLong city6 = new LatLong(35, 35, 6);
 		
 //		cities.addAll(Arrays.asList(city1, city2, city3, city4));

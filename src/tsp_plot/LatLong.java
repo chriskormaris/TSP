@@ -1,23 +1,13 @@
 package tsp_plot;
 
+
 // Geographic Coordinates
 public class LatLong {
 	
-	private double latitude; // y axis
-	private double longitude; // x axis
+	private double longitude;  // x axis
+	private double latitude;  // y axis
 	private int id;
-	
-	public LatLong(double latitude, double longitude) {
-		this.latitude = latitude;
-		this.longitude = longitude;
-	}
-	
-	public LatLong(double latitude, double longitude, int id) {
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.id = id;
-	}
-	
+
 	public LatLong() {
 
 	}
@@ -26,20 +16,31 @@ public class LatLong {
 		this.id = id;
 	}
 	
-	public double getLatitude() {
-		return latitude;
-	}
-	
-	public void setLatitude(double latitude) {
+	public LatLong(double longitude, double latitude) {
+		this.longitude = longitude;
 		this.latitude = latitude;
 	}
 	
+	public LatLong(double longitude, double latitude, int id) {
+		this.longitude = longitude;
+		this.latitude = latitude;
+		this.id = id;
+	}
+
 	public double getLongitude() {
 		return longitude;
 	}
 	
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
+	}
+	
+	public double getLatitude() {
+		return latitude;
+	}
+	
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
 	}
 	
 	public int getId() {
@@ -51,11 +52,11 @@ public class LatLong {
 	}
 	
 	
-	public LatLong getRandomLatLong(double maxLatitude, double minLatitude, double maxLongitude, double minLongitude) {
+	public LatLong getRandomLatLong(double maxLongitude, double minLongitude, double maxLatitude, double minLatitude) {
 		LatLong latlong = new LatLong();
 		
-		double randomLatitude = (int) Math.round( Math.random() * (maxLatitude - minLatitude) ) + minLatitude;
-		double randomLongitude = (int) Math.round( Math.random() * (maxLongitude - minLongitude) ) + minLongitude;
+		double randomLatitude = Math.random() * (maxLatitude - minLatitude) + minLatitude;
+		double randomLongitude = Math.random() * (maxLongitude - minLongitude) + minLongitude;
 		
 		latlong.setLatitude(randomLatitude);
 		latlong.setLongitude(randomLongitude);
@@ -63,11 +64,11 @@ public class LatLong {
 		return latlong;
 	}
 	
-	public LatLong getRandomLatLong(double maxLatitude, double minLatitude, double maxLongitude, double minLongitude, int id) {
+	public LatLong getRandomLatLong(double maxLongitude, double minLongitude, double maxLatitude, double minLatitude, int id) {
 		LatLong latlong = new LatLong(id);
 		
-		double randomLatitude = (int) Math.round( Math.random() * (maxLatitude - minLatitude) ) + minLatitude;
-		double randomLongitude = (int) Math.round( Math.random() * (maxLongitude - minLongitude) ) + minLongitude;
+		double randomLatitude = Math.random() * (maxLatitude - minLatitude) + minLatitude;
+		double randomLongitude = Math.random() * (maxLongitude - minLongitude) + minLongitude;
 		
 		latlong.setLatitude(randomLatitude);
 		latlong.setLongitude(randomLongitude);

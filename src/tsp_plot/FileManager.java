@@ -1,5 +1,6 @@
 package tsp_plot;
 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -16,20 +17,21 @@ import java.util.List;
 
 public class FileManager {
 	
-	private List<LatLong> cities = new ArrayList<LatLong>();
+	private List<LatLong> cities;
 	
 	public void parseFile(String inputFile) {
 	
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(inputFile));
+			cities = new ArrayList<LatLong>();
 			String line;
 			int id = 1;
 			while ((line = br.readLine()) != null) {
 			
 				if (line.startsWith("city")) {
-					double latitude = Double.parseDouble(line.split("->")[1].split(",")[0].replace("latitude:", "").replace(" ", ""));
-					double longitude = Double.parseDouble(line.split("->")[1].split(",")[1].replace("longitude:", "").replace(" ", ""));
-					LatLong latlong = new LatLong(latitude, longitude, id);
+					double longitude = Double.parseDouble(line.split("->")[1].split(",")[0].replace("longitude:", "").trim());
+					double latitude = Double.parseDouble(line.split("->")[1].split(",")[1].replace("latitude:", "").trim());
+					LatLong latlong = new LatLong(longitude, latitude, id);
 					
 					// check if latlong is unique
 					if (!cities.contains(latlong)) {
@@ -54,7 +56,7 @@ public class FileManager {
 	
 	public void recreateFile(String filename) {
 	    try {
-			if ( Files.exists(Paths.get(filename), LinkOption.NOFOLLOW_LINKS) ) {
+			if (Files.exists(Paths.get(filename), LinkOption.NOFOLLOW_LINKS)) {
 				Files.delete(Paths.get(filename));
 			}
 			BufferedWriter bw = new BufferedWriter(new FileWriter(filename));
