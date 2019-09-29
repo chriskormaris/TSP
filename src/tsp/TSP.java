@@ -18,7 +18,7 @@ public class TSP {
 	static Vertex[] minTour;
 	static double minDistance = 1000000;
 	
-	// find all permutations for a Hamiltonian (TSP) cycle or tour
+	// Find all permutations for a Hamiltonian (TSP) cycle or tour.
 	// complexity: O(n!)
 	public static void findAllTours(Graph G) {
 		
@@ -32,9 +32,10 @@ public class TSP {
 		for (int i=0; i<N+1; i++) {
 			p[i] = i;
 		}
-		int i=0;
+		int i = 0;
 		int j;
-		int iteration=1;
+		@SuppressWarnings("unused")
+		int iteration = 1;
 		
 		while (i<N) {
 			p[i]--;
@@ -51,6 +52,7 @@ public class TSP {
 			tours.add(tour);
 			
 			// calculate the tour total distance and add it to a map
+			@SuppressWarnings("unused")
 			double tourDistance = calculateTourDistance(tour);
 			// printNoLN(tour, iteration);
 			// System.out.println("|| distance: " + tourDistance);
@@ -73,6 +75,7 @@ public class TSP {
 		System.out.println();
 	}
 	
+	@SuppressWarnings("unused")
 	private static void printNoLN(Vertex[] a, int iteration) {
 		System.out.print("tour " + iteration + ": ");
 		for(int i=0; i<a.length; i++) {
