@@ -106,6 +106,7 @@ public class MainRandomCoordinates {
 		System.out.println();
 
 		// print the total distance of the shortest tour
+		/*
 		double totalDistance = 0;
 		int cityCounter = 0;
 		for (LatLong city: shortestTour) {
@@ -117,6 +118,7 @@ public class MainRandomCoordinates {
 		}
 		System.out.println("shortest tour distance: " + totalDistance);
 		System.out.println();
+		*/
 
 		// find the tour's borders
 		printMapBorders(shortestTour);
@@ -128,32 +130,30 @@ public class MainRandomCoordinates {
 	}
 	
 	private static void printMapBorders(List<LatLong> map) {
-		double minLat = 1000000;
-		double maxLat = -1000000;
 		double minLong = 1000000;
 		double maxLong = -1000000;
+		double minLat = 1000000;
+		double maxLat = -1000000;
 		for (LatLong city: map) {
-		    double latitude = city.getLatitude();
 		    double longitude = city.getLongitude();
-		    if (latitude < minLat) {
-		    	minLat = latitude;
-		    }
-		    if (latitude > maxLat) {
-		    	maxLat = latitude;
-		    }
+		    double latitude = city.getLatitude();
 		    if (longitude < minLong) {
 		    	minLong = longitude;
 		    }
 		    if (longitude > maxLong) {
 		    	maxLong = longitude;
 		    }
+		    if (latitude < minLat) {
+		    	minLat = latitude;
+		    }
+		    if (latitude > maxLat) {
+		    	maxLat = latitude;
+		    }
 		}
-		System.out.println("minLat: " + minLat);
-		System.out.println("maxLat: " + maxLat);
 		System.out.println("minLong: " + minLong);
 		System.out.println("maxLong: " + maxLong);
+		System.out.println("minLat: " + minLat);
+		System.out.println("maxLat: " + maxLat);
 	}
 	
 }
-
-

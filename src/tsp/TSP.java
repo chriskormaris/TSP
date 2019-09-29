@@ -52,8 +52,8 @@ public class TSP {
 			
 			// calculate the tour total distance and add it to a map
 			double tourDistance = calculateTourDistance(tour);
-			printNoLN(tour, iteration);
-			System.out.println("|| distance: " + tourDistance);
+			// printNoLN(tour, iteration);
+			// System.out.println("|| distance: " + tourDistance);
 			iteration++;
 
 			i = 1;
@@ -112,8 +112,8 @@ public class TSP {
 
 	public Vertex[] tsp(Graph G) {
 		findAllTours(G);
-		System.out.println();
-		System.out.println("TSP tour of minimum weight: " + minDistance);
+		// System.out.println();
+		System.out.println("TSP tour of minimum distance: " + minDistance);
 		print(minTour);
 		return minTour;
 	}
