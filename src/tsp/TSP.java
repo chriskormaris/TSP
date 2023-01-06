@@ -62,14 +62,14 @@ public class TSP {
 			while (p[i] == 0) {
 				p[i] = i;
 				i++;
-			} // end while (p[i] is equal to 0)
-		} // end while (i < N)
+			}  // end while (p[i] is equal to 0)
+		}  // end while (i < N)
 		   
 	}
 	
 	private static void print(Vertex[] a) {
 		System.out.print("tour: ");
-		for(int i=0; i<a.length; i++) {
+		for (int i=0; i<a.length; i++) {
 			System.out.print(a[i] + " ");
 		}
 		System.out.println();
@@ -78,7 +78,7 @@ public class TSP {
 	@SuppressWarnings("unused")
 	private static void printNoLN(Vertex[] a, int iteration) {
 		System.out.print("tour " + iteration + ": ");
-		for(int i=0; i<a.length; i++) {
+		for (int i=0; i<a.length; i++) {
 			System.out.print(a[i] + " ");
 		}
 	}
