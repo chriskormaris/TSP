@@ -13,8 +13,8 @@ import graph.Vertex;
 // link -> http://www.quickperm.org/
 public class TSP {
 	
-	static List<Vertex[]> tours = new ArrayList<Vertex[]>();
-	static Map<Vertex[], Double> tourSums = new HashMap<Vertex[], Double>();
+	static List<Vertex[]> tours = new ArrayList<>();
+	static Map<Vertex[], Double> tourSums = new HashMap<>();
 	static Vertex[] minTour;
 	static double minDistance = 1000000;
 	
@@ -127,9 +127,9 @@ public class TSP {
 		Vertex C = new Vertex(2, "C");
 		Vertex D = new Vertex(3, "D");
 		Vertex E = new Vertex(4, "E");
-//		Vertex F = new Vertex(5, "F");
-//		Vertex G = new Vertex(6, "G"); // SINK VERTEX
-//		Vertex A2 = new Vertex(7, "A2"); // ADD A SECOND SOURCE VERTEX TO THE GRAPH
+		// Vertex F = new Vertex(5, "F");
+		// Vertex G = new Vertex(6, "G"); // SINK VERTEX
+		// Vertex A2 = new Vertex(7, "A2"); // ADD A SECOND SOURCE VERTEX TO THE GRAPH
 		
 		Vertex[] vertices = {A, B, C, D, E/*, F, G, A2*/};
 		
