@@ -3,11 +3,11 @@ package tsp;
 import graph.Edge;
 import graph.Graph;
 import graph.Vertex;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 // a brute-force approach
 // link -> http://www.quickperm.org/
@@ -21,21 +21,19 @@ public class TSP {
 	// Find all permutations for a Hamiltonian (TSP) cycle or tour.
 	// complexity: O(n!)
 	public static void findAllTours(Graph G) {
-
 		Vertex[] path = G.vertices;
 		int N = path.length;
 
 		minTour = new Vertex[G.V];
 
-
 		int[] p = new int[N + 1];
 		for (int i = 0; i < N + 1; i++) {
 			p[i] = i;
 		}
+
 		int i = 0;
 		int j;
-		@SuppressWarnings("unused")
-		int iteration = 1;
+		// int iteration = 1;
 
 		while (i < N) {
 			p[i]--;
@@ -54,9 +52,10 @@ public class TSP {
 			// calculate the tour total distance and add it to a map
 			@SuppressWarnings("unused")
 			double tourDistance = calculateTourDistance(tour);
-			// printNoLN(tour, iteration);
+			// System.out.print("iteration: " + iteration);
+			// printNoLN(tour);
 			// System.out.println("|| distance: " + tourDistance);
-			iteration++;
+			// iteration++;
 
 			i = 1;
 			while (p[i] == 0) {
@@ -64,20 +63,15 @@ public class TSP {
 				i++;
 			}  // end while (p[i] is equal to 0)
 		}  // end while (i < N)
-
 	}
 
 	private static void print(Vertex[] a) {
-		System.out.print("tour: ");
-		for (int i = 0; i < a.length; i++) {
-			System.out.print(a[i] + " ");
-		}
+		printNoLN(a);
 		System.out.println();
 	}
 
-	@SuppressWarnings("unused")
-	private static void printNoLN(Vertex[] a, int iteration) {
-		System.out.print("tour " + iteration + ": ");
+	private static void printNoLN(Vertex[] a) {
+		System.out.print("tour: ");
 		for (int i = 0; i < a.length; i++) {
 			System.out.print(a[i] + " ");
 		}
@@ -94,10 +88,8 @@ public class TSP {
 		double tourDistance = 0;
 		for (int i = 0; i < tour.length; i++) {
 			for (Edge edge : tour[i].outEdges) {
-				if (i < tour.length - 1) {
-					if (tour[i + 1].number == edge.v.number) {
-						tourDistance += edge.weight;
-					}
+				if (i < tour.length - 1 && tour[i + 1].number == edge.v.number) {
+					tourDistance += edge.weight;
 				}
 			}
 		}

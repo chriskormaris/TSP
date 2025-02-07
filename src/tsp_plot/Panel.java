@@ -1,24 +1,32 @@
 package tsp_plot;
 
-import javax.swing.*;
-import java.awt.*;
-//import javax.swing.JMenu;
-//import javax.swing.JMenuBar;
-//import javax.swing.JMenuItem;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.io.Serial;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+// import javax.swing.JMenu;
+// import javax.swing.JMenuBar;
+// import javax.swing.JMenuItem;
 
 /**
  * Abstract base class for all visual examples.
  */
 public abstract class Panel extends JPanel {
+
 	/**
 	 * Version id for serialization.
 	 */
+	@Serial
 	private static final long serialVersionUID = 8221256658243821951L;
 
 	/**
 	 * First corporate color used for normal coloring.
 	 */
 	protected static final Color COLOR1 = new Color(55, 170, 200);
+
 	/**
 	 * Second corporate color used as signal color
 	 */
@@ -53,7 +61,7 @@ public abstract class Panel extends JPanel {
 	 *
 	 * @return the frame instance used for displaying the example.
 	 */
-	protected JFrame showInFrame() {
+    public JFrame showInFrame() {
 		JFrame frame = new JFrame(getTitle());
 		frame.getContentPane().add(this, BorderLayout.CENTER);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -91,8 +99,8 @@ public abstract class Panel extends JPanel {
 
 	public static void centerWindow(JFrame frame) {
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-		int x = (int) (((dimension.getWidth() - frame.getWidth()) / 2));
-		int y = (int) (((dimension.getHeight() - frame.getHeight()) / 2));
+		int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+		int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
 		frame.setLocation(x, y);
 	}
 

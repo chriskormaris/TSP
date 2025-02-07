@@ -20,65 +20,55 @@ public class FileManager {
 	private List<LatLong> cities;
 
 	public void parseFile(String inputFile) {
-
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(inputFile));
-			cities = new ArrayList<LatLong>();
+		try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
+			cities = new ArrayList<>();
 			String line;
 			int id = 1;
 			while ((line = br.readLine()) != null) {
-
 				if (line.startsWith("city")) {
-					double longitude = Double.parseDouble(line.split("->")[1].split(",")[0].replace("longitude:", "").trim());
-					double latitude = Double.parseDouble(line.split("->")[1].split(",")[1].replace("latitude:", "").trim());
-					LatLong latlong = new LatLong(longitude, latitude, id);
+					double longitude = Double.parseDouble(line.split("->")[1].split(",")[0]
+															  .replace("longitude:", "").trim());
+					double latitude = Double.parseDouble(line.split("->")[1].split(",")[1]
+															 .replace("latitude:", "").trim());
+					LatLong latLong = new LatLong(longitude, latitude, id);
 
-					// check if latlong is unique
-					if (!cities.contains(latlong)) {
-						cities.add(latlong);
+					// check if latLong is unique
+					if (!cities.contains(latLong)) {
+						cities.add(latLong);
 					} else {
 						System.err.println("A city with the same latitude and longitude already exists!\n");
 					}
-
 				}
-
 				id++;
 			}
-
-			br.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		}
-
 	}
 
 	public void recreateFile(String filename) {
-		try {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
 			if (Files.exists(Paths.get(filename), LinkOption.NOFOLLOW_LINKS)) {
 				Files.delete(Paths.get(filename));
 			}
-			BufferedWriter bw = new BufferedWriter(new FileWriter(filename));
 			bw.flush();
-			bw.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		}
 	}
 
 	public void writeLineToFile(String outputFile, String line) {
-
 		try {
 			Files.write(Paths.get(outputFile), (line + "\n").getBytes(), StandardOpenOption.APPEND);
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		}
-
 	}
 
 	public List<LatLong> getCities() {
-		return cities;
+		return this.cities;
 	}
 
 }

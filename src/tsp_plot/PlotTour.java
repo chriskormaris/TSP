@@ -11,9 +11,12 @@ import de.erichseifert.gral.plots.lines.LineRenderer;
 import de.erichseifert.gral.plots.points.DefaultPointRenderer2D;
 import de.erichseifert.gral.plots.points.PointRenderer;
 import de.erichseifert.gral.ui.InteractivePanel;
-
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.RadialGradientPaint;
 import java.awt.geom.Point2D;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -22,22 +25,19 @@ import java.util.Random;
 public class PlotTour extends Panel {
 
 	// Version id for serialization.
+	@Serial
 	private static final long serialVersionUID = -5263057758564264676L;
 
 	// Instance to generate random data values.
 	private static final Random random = new Random();
 
-	private final List<LatLong> tour;
-
-	@SuppressWarnings("unchecked")
-	public PlotTour(List<LatLong> shortestTour) {
-		this.tour = shortestTour;
-
-		// CREATES A DATA TABLE
+	public PlotTour(List<LatLong> tour) {
+		// creates a data table
+		@SuppressWarnings("unchecked")
 		DataTable tourData = new DataTable(Double.class, Double.class);
 		tourData.setName("cities");
 
-		// PLOT OUT DATA AND SET XYPLOT IN JFRAME, THEN CONNECT LINES AND CHANGE COLORS
+		// plot out data and set xyplot in jframe, then connect lines and change colors
 		XYPlot xyPlot = new XYPlot(tourData);
 
 		for (LatLong city : tour) {
@@ -48,14 +48,15 @@ public class PlotTour extends Panel {
 
 		// Create different data series for each city point.
 		// This is useful for the legend and for assigning different colors.
-		List<DataSeries> points = new ArrayList<DataSeries>();
+		List<DataSeries> points = new ArrayList<>();
 		int iterations = 0;
 		for (LatLong city : tour) {
+			@SuppressWarnings("unchecked")
 			DataTable tempData = new DataTable(Double.class, Double.class);
 			tempData.add(city.getLongitude(), city.getLatitude());
 			if (iterations < tour.size() - 1) {
 				DataSeries ds = new DataSeries("City " + city.getId(), tempData);
-//	 		    plot.add(ds);
+	 		    // plot.add(ds);
 				points.add(ds);
 			}
 			iterations++;
@@ -90,10 +91,10 @@ public class PlotTour extends Panel {
 		xyPlot.setAxisRenderer(XYPlot.AXIS_X, axisRendererX);
 
 		// Custom tick labels
-// 		Map<Double, String> labels = new HashMap<Double, String>();
-// 		labels.put(2.0, "Two");
-// 		labels.put(1.5, "OnePointFive");
-// 		axisRendererX.setCustomTicks(labels);
+ 		// Map<Double, String> labels = new HashMap<>();
+ 		// labels.put(2.0, "Two");
+ 		// labels.put(1.5, "OnePointFive");
+ 		// axisRendererX.setCustomTicks(labels);
 
 		// Custom stroke for the Y axis
 		BasicStroke stroke = new BasicStroke(2f);
@@ -103,7 +104,7 @@ public class PlotTour extends Panel {
 		axisRendererY.setLabel(linearAxisLabel);
 
 		// Change intersection point of Y axis
-// 		axisRendererY.setIntersection(1.0);
+ 		// axisRendererY.setIntersection(1.0);
 
 		// Change tick spacing
 		axisRendererX.setTickSpacing(5.0);
@@ -114,8 +115,13 @@ public class PlotTour extends Panel {
 		LineRenderer lineRenderer = new DefaultLineRenderer2D();
 		lineRenderer.setColor(COLOR1);
 		lineRenderer.setStroke(new BasicStroke(
-				3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND,
-				10.0f, new float[]{3f, 6f}, 0.0f));
+			3.0f,
+			BasicStroke.CAP_ROUND,
+			BasicStroke.JOIN_ROUND,
+			10.0f,
+			new float[]{3f, 6f},
+			0.0f
+		));
 		xyPlot.setLineRenderers(tourData, lineRenderer);
 
 		// Custom gaps for points
@@ -124,7 +130,7 @@ public class PlotTour extends Panel {
 
 		// Format rendering of data points.
 		// This batch of code changes the color of the points randomly.
-		for (DataSeries ds : points) {
+		for (DataSeries dataSeries : points) {
 			PointRenderer defaultPointRenderer = new DefaultPointRenderer2D();
 
 			// Java 'Color' class takes 3 floats, from 0 to 1.
@@ -134,16 +140,14 @@ public class PlotTour extends Panel {
 			Color randomColor = new Color(r, g, b);
 
 			defaultPointRenderer.setColor(randomColor);
-			xyPlot.setPointRenderers(ds, defaultPointRenderer);
+			xyPlot.setPointRenderers(dataSeries, defaultPointRenderer);
 		}
-
 
 		// Add plot to Swing component
 		add(new InteractivePanel(xyPlot), BorderLayout.CENTER);
 
 		// Change zoom level
 		xyPlot.getNavigator().setZoom(0.6f);
-
 	}
 
 	@Override
@@ -155,6 +159,5 @@ public class PlotTour extends Panel {
 	public String getDescription() {
 		return "Travelling Salesman Problem Plot";
 	}
-
 
 }

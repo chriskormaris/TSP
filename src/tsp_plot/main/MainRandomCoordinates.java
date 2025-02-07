@@ -1,29 +1,31 @@
-package tsp_plot;
+package tsp_plot.main;
 
 import graph.Edge;
 import graph.Graph;
 import graph.Vertex;
-import tsp.TSP;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import tsp.TSP;
+import tsp_plot.LatLong;
+import tsp_plot.PlotTour;
+import tsp_plot.Utilities;
 
 
 // TRAVELLING SALESMAN PROBLEM
-// Made by Chris Kormaris
+// Made by Christos Kormaris
 public class MainRandomCoordinates {
 
 	static List<LatLong> cities;
 	static List<LatLong> shortestTour;
 
 	public static void main(String[] args) {
-		cities = new ArrayList<LatLong>();
+		cities = new ArrayList<>();
 
-		/*** RANDOM CITY COORDINATES ***/
-//		LatLong randLatLong = new LatLong().getRandomLatLong(50, -50, 50, -50);
+		/* random city coordinates */
+		// LatLong randLatLong = new LatLong().getRandomLatLong(50, -50, 50, -50);
 
 		LatLong city1 = new LatLong().getRandomLatLong(50, -50, 50, -50, 1);
 		LatLong city2 = new LatLong().getRandomLatLong(50, -50, 50, -50, 2);
@@ -31,16 +33,16 @@ public class MainRandomCoordinates {
 		LatLong city4 = new LatLong().getRandomLatLong(50, -50, 50, -50, 4);
 		LatLong city5 = new LatLong().getRandomLatLong(50, -50, 50, -50, 5);
 		LatLong city6 = new LatLong().getRandomLatLong(50, -50, 50, -50, 6);
-//		LatLong city7 = new LatLong().getRandomLatLong(50, -50, 50, -50, 7);
-//		LatLong city8 = new LatLong().getRandomLatLong(50, -50, 50, -50, 8);
-//		LatLong city9 = new LatLong().getRandomLatLong(50, -50, 50, -50, 9);
+		// LatLong city7 = new LatLong().getRandomLatLong(50, -50, 50, -50, 7);
+		// LatLong city8 = new LatLong().getRandomLatLong(50, -50, 50, -50, 8);
+		// LatLong city9 = new LatLong().getRandomLatLong(50, -50, 50, -50, 9);
 
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4));
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5));
+		// cities.addAll(Arrays.asList(city1, city2, city3, city4));
+		// cities.addAll(Arrays.asList(city1, city2, city3, city4, city5));
 		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6));
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7));
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7, city8));
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7, city8, city9));
+		// cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7));
+		// cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7, city8));
+		// cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7, city8, city9));
 
 		// calculate the distances between every city and print them
 		/*
@@ -56,14 +58,14 @@ public class MainRandomCoordinates {
 		}
 		*/
 
-		/*** RUN TRAVELLING SALESMAN ALGORITHM ***/
+		/* RUN TRAVELLING SALESMAN ALGORITHM */
 
 		// First construct the Graph
 		Graph graph = new Graph(cities.size());
 		graph.E = graph.V * (graph.V - 1);
 		graph.edges = new Edge[graph.E];
 		int counter = 0;
-		Map<Vertex, LatLong> vertexCity = new HashMap<Vertex, LatLong>();
+		Map<Vertex, LatLong> vertexCity = new HashMap<>();
 		for (LatLong city : cities) {
 			Vertex vertex = new Vertex(city.getId());
 			vertexCity.put(vertex, city);
@@ -91,7 +93,7 @@ public class MainRandomCoordinates {
 		System.out.println();
 
 		// print the cities of the shortest tour
-		shortestTour = new ArrayList<LatLong>();
+		shortestTour = new ArrayList<>();
 		System.out.println("shortest tour: ");
 		for (int i = 0; i < tour.length; i++) {
 			for (LatLong city : cities) {
@@ -124,9 +126,8 @@ public class MainRandomCoordinates {
 		Utilities.printMapBorders(shortestTour);
 		System.out.println();
 
-		PlotTour myplot = new PlotTour(shortestTour);
-		myplot.showInFrame();
-
+		PlotTour myPlot = new PlotTour(shortestTour);
+		myPlot.showInFrame();
 	}
 
 }

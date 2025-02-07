@@ -1,7 +1,6 @@
 package tsp_plot;
 
 import de.erichseifert.gral.data.DataSeries;
-
 import java.util.Comparator;
 
 public class DataSeriesComparator implements Comparator<DataSeries> {

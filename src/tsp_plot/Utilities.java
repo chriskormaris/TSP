@@ -4,6 +4,9 @@ import java.util.List;
 
 public class Utilities {
 
+	private Utilities() {
+	}
+
 	public static void printMapBorders(List<LatLong> map) {
 		double minLongitude = 180;
 		double maxLongitude = -180;
@@ -12,23 +15,15 @@ public class Utilities {
 		for (LatLong city : map) {
 			double longitude = city.getLongitude();
 			double latitude = city.getLatitude();
-			if (longitude < minLongitude) {
-				minLongitude = longitude;
-			}
-			if (longitude > maxLongitude) {
-				maxLongitude = longitude;
-			}
-			if (latitude < minLatitude) {
-				minLatitude = latitude;
-			}
-			if (latitude > maxLatitude) {
-				maxLatitude = latitude;
-			}
+			minLongitude = Math.min(minLongitude, longitude);
+			maxLongitude = Math.max(maxLongitude, longitude);
+			minLatitude = Math.min(minLatitude, latitude);
+			maxLatitude = Math.max(maxLatitude, latitude);
 		}
-		System.out.println("minLong: " + minLongitude);
-		System.out.println("maxLong: " + maxLongitude);
-		System.out.println("minLat: " + minLatitude);
-		System.out.println("maxLat: " + maxLatitude);
+		System.out.println("minLongitude: " + minLongitude);
+		System.out.println("maxLongitude: " + maxLongitude);
+		System.out.println("minLatitude: " + minLatitude);
+		System.out.println("maxLatitude: " + maxLatitude);
 	}
 
 }

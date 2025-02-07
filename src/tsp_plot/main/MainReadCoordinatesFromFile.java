@@ -1,30 +1,33 @@
-package tsp_plot;
+package tsp_plot.main;
 
 import graph.Edge;
 import graph.Graph;
 import graph.Vertex;
-import tsp.TSP;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import tsp.TSP;
+import tsp_plot.FileManager;
+import tsp_plot.LatLong;
+import tsp_plot.PlotTour;
+import tsp_plot.Utilities;
 
 
 // TRAVELLING SALESMAN PROBLEM
-// Made by Chris Kormaris
-public class MainReadFromFileCoordinates {
+// Made by Christos Kormaris
+public class MainReadCoordinatesFromFile {
 
 	static List<LatLong> cities;
 	static List<LatLong> shortestTour;
 
 	public static void main(String[] args) {
-		cities = new ArrayList<LatLong>();
+		cities = new ArrayList<>();
 
-		/*** GET CITY COORDINATES FROM FILE ***/
-		FileManager fm = new FileManager();
-		fm.parseFile("tsp_coordinates/cities.txt");
-		cities = fm.getCities();
+		/* get city coordinates from file */
+		FileManager fileManager = new FileManager();
+		fileManager.parseFile("tsp_coordinates/cities.txt");
+		cities = fileManager.getCities();
 
 		// calculate the distances between every city and print them
 		/*
@@ -40,14 +43,14 @@ public class MainReadFromFileCoordinates {
 		}
 		*/
 
-		/*** RUN TRAVELLING SALESMAN ALGORITHM ***/
+		/* RUN TRAVELLING SALESMAN ALGORITHM */
 
 		// First construct the Graph
 		Graph graph = new Graph(cities.size());
 		graph.E = graph.V * (graph.V - 1);
 		graph.edges = new Edge[graph.E];
 		int counter = 0;
-		Map<Vertex, LatLong> vertexCity = new HashMap<Vertex, LatLong>();
+		Map<Vertex, LatLong> vertexCity = new HashMap<>();
 		for (LatLong city : cities) {
 			Vertex vertex = new Vertex(city.getId());
 			vertexCity.put(vertex, city);
@@ -60,8 +63,8 @@ public class MainReadFromFileCoordinates {
 			for (Vertex v : graph.vertices) {
 				if (u.number != v.number) {
 					LatLong city = vertexCity.get(u);
-					LatLong other_city = vertexCity.get(v);
-					double distance = city.distanceFrom(other_city);
+					LatLong otherCity = vertexCity.get(v);
+					double distance = city.distanceFrom(otherCity);
 					Edge edge = new Edge(u, v, distance);
 					graph.edges[counter] = edge;
 					counter++;
@@ -75,7 +78,7 @@ public class MainReadFromFileCoordinates {
 		System.out.println();
 
 		// print the cities of the shortest tour
-		shortestTour = new ArrayList<LatLong>();
+		shortestTour = new ArrayList<>();
 		System.out.println("shortest tour: ");
 		for (int i = 0; i < tour.length; i++) {
 			for (LatLong city : cities) {
@@ -108,11 +111,8 @@ public class MainReadFromFileCoordinates {
 		Utilities.printMapBorders(shortestTour);
 		System.out.println();
 
-		PlotTour myplot = new PlotTour(shortestTour);
-		myplot.showInFrame();
-
+		PlotTour myPlot = new PlotTour(shortestTour);
+		myPlot.showInFrame();
 	}
 
 }
-
-

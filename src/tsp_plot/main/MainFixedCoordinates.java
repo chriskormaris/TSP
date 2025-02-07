@@ -1,28 +1,30 @@
-package tsp_plot;
+package tsp_plot.main;
 
 import graph.Edge;
 import graph.Graph;
 import graph.Vertex;
-import tsp.TSP;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import tsp.TSP;
+import tsp_plot.LatLong;
+import tsp_plot.PlotTour;
+import tsp_plot.Utilities;
 
 
 // TRAVELLING SALESMAN PROBLEM
-// Made by Chris Kormaris
+// Made by Christos Kormaris
 public class MainFixedCoordinates {
 
 	static List<LatLong> cities;
 	static List<LatLong> shortestTour;
 
 	public static void main(String[] args) {
-		cities = new ArrayList<LatLong>();
+		cities = new ArrayList<>();
 
-		/*** FIXED CITY COORDINATES ***/
+		/* fixed city coordinates */
 		LatLong city1 = new LatLong(10, 10, 1);
 		LatLong city2 = new LatLong(-20, 20, 2);
 		LatLong city3 = new LatLong(-30, -30, 3);
@@ -30,12 +32,12 @@ public class MainFixedCoordinates {
 		LatLong city5 = new LatLong(25, -25, 5);
 		LatLong city6 = new LatLong(35, 35, 6);
 
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4));
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5));
+		// cities.addAll(Arrays.asList(city1, city2, city3, city4));
+		// cities.addAll(Arrays.asList(city1, city2, city3, city4, city5));
 		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6));
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7));
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7, city8));
-//		cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7, city8, city9));
+		// cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7));
+		// cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7, city8));
+		// cities.addAll(Arrays.asList(city1, city2, city3, city4, city5, city6, city7, city8, city9));
 
 		// calculate the distances between every city and print them
 		/*
@@ -51,14 +53,14 @@ public class MainFixedCoordinates {
 		}
 		*/
 
-		/*** RUN TRAVELLING SALESMAN ALGORITHM ***/
+		/* RUN TRAVELLING SALESMAN ALGORITHM */
 
 		// First construct the Graph
 		Graph graph = new Graph(cities.size());
 		graph.E = graph.V * (graph.V - 1);
 		graph.edges = new Edge[graph.E];
 		int counter = 0;
-		Map<Vertex, LatLong> vertexCity = new HashMap<Vertex, LatLong>();
+		Map<Vertex, LatLong> vertexCity = new HashMap<>();
 		for (LatLong city : cities) {
 			Vertex vertex = new Vertex(city.getId());
 			vertexCity.put(vertex, city);
@@ -86,7 +88,7 @@ public class MainFixedCoordinates {
 		System.out.println();
 
 		// print the cities of the shortest tour
-		shortestTour = new ArrayList<LatLong>();
+		shortestTour = new ArrayList<>();
 		System.out.println("shortest tour: ");
 		for (int i = 0; i < tour.length; i++) {
 			for (LatLong city : cities) {
@@ -119,9 +121,8 @@ public class MainFixedCoordinates {
 		Utilities.printMapBorders(shortestTour);
 		System.out.println();
 
-		PlotTour myplot = new PlotTour(shortestTour);
-		myplot.showInFrame();
-
+		PlotTour myPlot = new PlotTour(shortestTour);
+		myPlot.showInFrame();
 	}
 
 }

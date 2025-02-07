@@ -51,20 +51,17 @@ public class LatLong {
 		this.id = id;
 	}
 
-
 	public LatLong getRandomLatLong(double maxLongitude, double minLongitude, double maxLatitude, double minLatitude) {
-		LatLong latlong = new LatLong();
-
-		double randomLatitude = Math.random() * (maxLatitude - minLatitude) + minLatitude;
-		double randomLongitude = Math.random() * (maxLongitude - minLongitude) + minLongitude;
-
-		latlong.setLatitude(randomLatitude);
-		latlong.setLongitude(randomLongitude);
-
-		return latlong;
+		return getRandomLatLong(maxLongitude, minLongitude, maxLatitude, minLatitude, 0);
 	}
 
-	public LatLong getRandomLatLong(double maxLongitude, double minLongitude, double maxLatitude, double minLatitude, int id) {
+	public LatLong getRandomLatLong(
+		double maxLongitude,
+		double minLongitude,
+		double maxLatitude,
+		double minLatitude,
+		int id
+	) {
 		LatLong latlong = new LatLong(id);
 
 		double randomLatitude = Math.random() * (maxLatitude - minLatitude) + minLatitude;
@@ -76,7 +73,6 @@ public class LatLong {
 		return latlong;
 	}
 
-
 	@Override
 	public String toString() {
 		if (this.id >= 0) {
@@ -86,10 +82,9 @@ public class LatLong {
 		}
 	}
 
-
 	@Override
 	public int hashCode() {
-//		System.out.println("in hash code");
+		// System.out.println("in hash code");
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (int) this.latitude;
@@ -98,7 +93,7 @@ public class LatLong {
 		return result;
 	}
 
-	// equals Implementation    
+	// equals Implementation
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -117,19 +112,15 @@ public class LatLong {
 	}
 
 	// calculate the euclidean distance between two nodes
-	public double distanceFrom(LatLong latlong2) {
-//	public synchronized double distanceFrom(LatLong latlong2) {
-		double distance = 0;
-
+	public double distanceFrom(LatLong other) {
+	// public synchronized double distanceFrom(LatLong other) {
 		double latitude1 = getLatitude();
-		double latitude2 = latlong2.getLatitude();
+		double latitude2 = other.getLatitude();
 
 		double longitude1 = getLongitude();
-		double longitude2 = latlong2.getLongitude();
+		double longitude2 = other.getLongitude();
 
-		distance = Math.sqrt(Math.pow(longitude1 - longitude2, 2) + Math.pow(latitude1 - latitude2, 2));
-
-		return distance;
+        return Math.sqrt(Math.pow(longitude1 - longitude2, 2) + Math.pow(latitude1 - latitude2, 2));
 	}
 
 }
